@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme>
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Product History - {{ pid }}</title>
+
+   <!-- Tailwind & custom CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+
+   <!-- Timeline JS -->
+   <script src="{{ url_for('static', filename='js/timeline.js') }}" defer></script>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-300">
+
+   <header class="bg-darkheader text-white py-4 shadow-md">
+      <div class="container mx-auto flex justify-between items-center">
+         <h1 class="text-2xl font-bold">SupplyChainTracker</h1>
+         <a href="{{ url_for('track') }}" class="bg-primary text-white px-3 py-1 rounded hover:bg-blue-600">← Track
+            Another</a>
+      </div>
+   </header>
+
+   <main class="container mx-auto py-6 space-y-6">
+      <h2 class="text-2xl font-semibold text-center">History for Product ID: {{ pid }}</h2>
+
+      <div class="flex justify-center">
+         <img src="data:image/png;base64,{{ qr }}" alt="QR code" class="w-32 h-32" />
+      </div>
+
+      {% if history and history|length > 0 %}
+      <ul class="timeline">
+         {% for block in history|reverse %}
+         <li class="timeline-item mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-1">
+               <span>Block #{{ block.index }}</span>
+               <span>{{ block.timestamp|datetimeformat }}</span>
+            </div>
+            <div class="font-semibold text-primary">
+               {{ block.data.by.title() }}
+            </div>
+            <div class="mt-2">
+               {{ block.data.description }}
+            </div>
+         </li>
+
+         {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-center text-gray-600 dark:text-gray-400">
+         No history found for this Product ID.
+      </p>
+      {% endif %}
+   </main>
+
+   <script>
+      // Apply stored theme
+      const html = document.documentElement;
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') html.classList.add('dark');
+   </script>
+</body>
+
+</html>

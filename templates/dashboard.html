@@ -1,0 +1,36 @@
+<!-- dashboard.html: card layout -->
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="text-2xl font-semibold mb-6">Welcome, {{ role.title() }}</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+   <div class="glass-card p-4">
+      <h3 class="font-bold mb-2">Add / Update Product</h3>
+      <p class="text-sm mb-4">Record manufacturing, shipping, or retail events.</p>
+      <a href="{{ url_for('add_product') }}"
+         class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">Go</a>
+   </div>
+   <div class="glass-card p-4">
+      <h3 class="font-bold mb-2">Track Product</h3>
+      <p class="text-sm mb-4">View full product journey by ID.</p>
+      <a href="{{ url_for('track') }}"
+         class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">Go</a>
+   </div>
+   <div class="glass-card p-4">
+      <h3 class="font-bold mb-2">Logout</h3>
+      <p class="text-sm mb-4">End your session securely.</p>
+      <a href="{{ url_for('logout') }}"
+         class="inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+   </div>
+   <div class="glass-card p-4">
+   <h3 class="font-bold mb-2">Public Catalog</h3>
+   <p class="text-sm mb-4">See latest status for all products.</p>
+   <a href="{{ url_for('catalog') }}" class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Catalog</a>
+ </div>
+ <div class="glass-card p-4">
+   <h3 class="font-bold mb-2">Audit Log</h3>
+   <p class="text-sm mb-4">Review user activity history.</p>
+   <a href="{{ url_for('audit') }}" class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Audit</a>
+ </div>
+</div>
+{% endblock %}

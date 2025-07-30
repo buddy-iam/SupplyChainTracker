@@ -1,0 +1,28 @@
+<!-- login.html -->
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+   <h2 class="text-xl font-semibold mb-4 text-center">Sign In</h2>
+   <form method="POST" class="space-y-4">
+      <div>
+         <label class="block mb-1">Role</label>
+         <select name="role" class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700">
+            {% for r in roles %}
+            <option value="{{ r }}">{{ r }}</option>
+            {% endfor %}
+         </select>
+      </div>
+      <div>
+         <label class="block mb-1">Username</label>
+         <input type="text" name="username" required class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700" />
+      </div>
+      <div>
+         <label class="block mb-1">Password</label>
+         <input type="password" name="password" required
+            class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700" />
+      </div>
+      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-blue-600">Login</button>
+   </form>
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!-- templates/audit.html -->
+{% extends "base.html" %}
+{% block title %}Audit Log{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+   <h1 class="text-3xl font-bold mb-6 text-center">User Activity Audit Log</h1>
+   {% if logs %}
+   <div class="overflow-x-auto">
+      <table class="min-w-full bg-white dark:bg-gray-800 rounded-lg shadow-md">
+         <thead>
+            <tr class="bg-gray-200 dark:bg-gray-700">
+               <th class="px-4 py-2 text-left">Role</th>
+               <th class="px-4 py-2 text-left">Action</th>
+               <th class="px-4 py-2 text-left">Product ID</th>
+               <th class="px-4 py-2 text-left">Timestamp</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for entry in logs|reverse %}
+            <tr class="border-b border-gray-200 dark:border-gray-700">
+               <td class="px-4 py-2">{{ entry.role or 'Guest' }}</td>
+               <td class="px-4 py-2">{{ entry.action }}</td>
+               <td class="px-4 py-2">{{ entry.product_id or '-' }}</td>
+               <td class="px-4 py-2">{{ entry.timestamp|datetimeformat }}</td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+   {% else %}
+   <p class="text-center text-gray-600 dark:text-gray-400">No audit records.</p>
+   {% endif %}
+   <div class="mt-6 text-center">
+      <a href="{{ url_for('dashboard') }}" class="bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">← Back to
+         Dashboard</a>
+   </div>
+</div>
+{% endblock %}

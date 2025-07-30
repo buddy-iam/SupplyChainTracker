@@ -1,0 +1,69 @@
+/* style.css: add glassmorphism and timeline improvements */
+:root {
+   --glass-bg: rgba(255, 255, 255, 0.1);
+   --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] {
+   --glass-bg: rgba(0, 0, 0, 0.3);
+   --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+.glass-card {
+   background: var(--glass-bg);
+   backdrop-filter: blur(10px);
+   border: 1px solid var(--glass-border);
+   border-radius: 12px;
+}
+
+/* existing .timeline reset */
+.timeline {
+   list-style: none;
+   padding: 0;
+}
+
+/* timeline-item base */
+.timeline-item {
+   opacity: 0;
+   transform: translateX(-20px);
+   border-left: 4px solid #007bff;
+   transition: transform .3s, opacity .3s;
+}
+
+/* show state */
+.timeline-item.show {
+   opacity: 1;
+   transform: translateX(0);
+}
+
+/* 
+.timeline-item {
+   border-left: 4px solid var(--tw-prose-pre-bg, #007bff);
+   transition: transform .3s, opacity .3s;
+}
+
+.timeline-item.show {
+   opacity: 1;
+   transform: translateX(0);
+}
+
+.timeline-item {
+   opacity: 0;
+   transform: translateX(-20px);
+} */
+
+@keyframes fadeInRight {
+   from {
+      opacity: 0;
+      transform: translateX(-20px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateX(0);
+   }
+}
+
+.timeline-item.show {
+   animation: fadeInRight .5s forwards;
+}

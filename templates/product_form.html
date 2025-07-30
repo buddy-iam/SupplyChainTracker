@@ -1,0 +1,21 @@
+<!-- product_form.html: Tailwind + glassmorphism -->
+{% extends "base.html" %}
+{% block title %}Add / Update Product{% endblock %}
+{% block content %}
+<div class="max-w-lg mx-auto glass-card p-6 shadow-lg">
+   <h2 class="text-xl font-semibold mb-4 text-center">{{ role.title() }}: Add / Update Product</h2>
+   <form method="POST" class="space-y-4">
+      <div>
+         <label class="block mb-1">Product ID</label>
+         <input type="text" name="product_id" required
+            class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" />
+      </div>
+      <div>
+         <label class="block mb-1">Description</label>
+         <textarea name="description" rows="3" required
+            class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-blue-600">Submit</button>
+   </form>
+</div>
+{% endblock %}
