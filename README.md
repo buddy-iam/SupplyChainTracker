@@ -6,24 +6,16 @@ A web-based blockchain solution to bring **transparency**, **traceability**, and
 
 ## Table of Contents
 
-- [Demo](#demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
 - [Usage](#usage)
 - [How It Works](#how-it-works)
-- [Screenshots](#screenshots)
 - [Future Enhancements](#future-enhancements)
 - [License](#license)
 - [Contributing](#contributing)
 - [Contact](#contact)
-
----
-
-## Demo
-
-[Optional: Insert a link to a live demo or demo video]
 
 ---
 
@@ -89,7 +81,8 @@ SupplyChainTracker/
 
 -Clone the repo:
 
-git clone https://github.com/yourusername/SupplyChainTracker.git
+git clone https://github.com/buddy-iam/SupplyChainTracker
+
 cd SupplyChainTracker
 
 1. Run the Flask application:
