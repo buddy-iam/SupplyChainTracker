@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Issue Product Recall{% endblock %}
+{% block content %}
+<div class="max-w-lg mx-auto glass-card p-6 shadow-lg">
+  <h2 class="text-xl font-semibold mb-4 text-center">Issue Product Recall</h2>
+  <form method="POST" class="space-y-4">
+    <div>
+      <label class="block mb-1">Product ID to Recall</label>
+      <input type="text" name="product_id" required
+             class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" />
+    </div>
+    <div>
+      <label class="block mb-1">Recall Reason</label>
+      <textarea name="recall_reason" rows="3" required
+                placeholder="Describe the reason for the recall"
+                class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+    </div>
+    <button type="submit"
+            class="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700">
+      Issue Recall
+    </button>
+  </form>
+  <div class="mt-4 text-center">
+    <a href="{{ url_for('dashboard') }}" class="text-primary hover:underline">← Back to Dashboard</a>
+  </div>
+</div>
+{% endblock %}

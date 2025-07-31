@@ -2,20 +2,22 @@
 {% extends "base.html" %}
 {% block title %}Add / Update Product{% endblock %}
 {% block content %}
-<div class="max-w-lg mx-auto glass-card p-6 shadow-lg">
-   <h2 class="text-xl font-semibold mb-4 text-center">{{ role.title() }}: Add / Update Product</h2>
-   <form method="POST" class="space-y-4">
-      <div>
-         <label class="block mb-1">Product ID</label>
-         <input type="text" name="product_id" required
-            class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary" />
-      </div>
-      <div>
-         <label class="block mb-1">Description</label>
-         <textarea name="description" rows="3" required
-            class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-      </div>
-      <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-blue-600">Submit</button>
-   </form>
+<div class="flex justify-center items-center py-16">
+   <div class="glass-card shadow-2xl p-10 w-full max-w-xl">
+      <h2 class="text-3xl font-bold mb-6 text-center">{{ role.title() }}: Add / Update Product</h2>
+      <form method="POST" class="space-y-6">
+         <div>
+            <label class="block mb-1">Product ID</label>
+            <input type="text" name="product_id" required
+               class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 " />
+         </div>
+         <div>
+            <label class="block mb-1">Description</label>
+            <textarea name="description" rows="3" required
+               class="w-full p-2 border rounded bg-gray-50 dark:bg-gray-700 "></textarea>
+         </div>
+         <button type="submit" class="w-full bg-primary text-white py-2 rounded hover:bg-blue-600">Submit</button>
+      </form>
+   </div>
 </div>
 {% endblock %}

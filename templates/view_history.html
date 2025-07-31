@@ -31,6 +31,15 @@
          <img src="data:image/png;base64,{{ qr }}" alt="QR code" class="w-32 h-32" />
       </div>
 
+      {% if is_recalled %}
+      <div
+         class="max-w-2xl mx-auto mt-4 p-4 bg-red-100 border border-red-400 rounded text-red-700 font-bold text-center">
+         ⚠️ <strong>This product has been RECALLED.</strong><br />
+         Please do not use or sell this item.
+      </div>
+      {% endif %}
+
+
       {% if history and history|length > 0 %}
       <ul class="timeline">
          {% for block in history|reverse %}

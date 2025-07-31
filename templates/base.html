@@ -49,20 +49,43 @@
       </div>
    </nav>
 
+   <nav>…</nav>
 
-   <main class="container mx-auto py-6">
+   <!-- Flash messages -->
+   {% for msg in get_flashed_messages() %}
+   <div class="flash-notice">
+      {{ msg }}
+   </div>
+   {% endfor %}
+
+
+   <main class="container mx-auto py-6 min-h-[75vh]">
       {% block content %}{% endblock %}
    </main>
 
+   <!-- Theme toggle script -->
    <script>
-      // On load, apply stored theme
+      // Apply stored theme
       const html = document.documentElement;
-      const stored = localStorage.getItem('theme') || 'light';
-      if (stored === 'dark') html.classList.add('dark');
+      const storedTheme = localStorage.getItem('theme') || 'light';
+      if (storedTheme === 'dark') html.classList.add('dark');
 
+      // Theme toggle button
       document.getElementById('toggleTheme').addEventListener('click', () => {
          html.classList.toggle('dark');
          localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+      });
+   </script>
+
+   <script>
+      document.addEventListener("DOMContentLoaded", () => {
+         const notices = document.querySelectorAll('.flash-notice');
+         notices.forEach(n => {
+            // after DOM load, schedule adding fade-out class
+            setTimeout(() => n.classList.add('fade-out'), 2000);
+            // remove element after fade completes
+            setTimeout(() => n.remove(), 3000);
+         });
       });
    </script>
 

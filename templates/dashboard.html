@@ -23,14 +23,25 @@
          class="inline-block bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
    </div>
    <div class="glass-card p-4">
-   <h3 class="font-bold mb-2">Public Catalog</h3>
-   <p class="text-sm mb-4">See latest status for all products.</p>
-   <a href="{{ url_for('catalog') }}" class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Catalog</a>
- </div>
- <div class="glass-card p-4">
-   <h3 class="font-bold mb-2">Audit Log</h3>
-   <p class="text-sm mb-4">Review user activity history.</p>
-   <a href="{{ url_for('audit') }}" class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Audit</a>
- </div>
+      <h3 class="font-bold mb-2">Public Catalog</h3>
+      <p class="text-sm mb-4">See latest status for all products.</p>
+      <a href="{{ url_for('catalog') }}"
+         class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Catalog</a>
+   </div>
+   <div class="glass-card p-4">
+      <h3 class="font-bold mb-2">Audit Log</h3>
+      <p class="text-sm mb-4">Review user activity history.</p>
+      <a href="{{ url_for('audit') }}"
+         class="inline-block bg-primary text-white px-4 py-2 rounded hover:bg-blue-600">View Audit</a>
+   </div>
+   {% if role == "Manufacturer" %}
+   <div class="glass-card p-4">
+      <h3 class="font-bold mb-2 text-white-600">Issue Product Recall</h3>
+      <p class="text-sm mb-4">Declare a recall for a product or batch.</p>
+      <a href="{{ url_for('recall') }}"
+         class="inline-block bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Issue Recall</a>
+   </div>
+   {% endif %}
+
 </div>
 {% endblock %}
